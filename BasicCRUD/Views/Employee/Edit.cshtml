@@ -1,0 +1,105 @@
+﻿@model BasicCRUD.ViewModels.EmployeeViewModel
+
+<form method="post" asp-controller="Employee" asp-action="Edit" asp-route-EmpId="@Model.EmpID" enctype="multipart/form-data">
+    <h3 class="text-primary text-center">Edit Employee</h3>
+    <hr />
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="EmpID"></label>
+        </div>
+        <div class="col-10">
+            <input asp-for="EmpID" class="form-control" readonly />
+            <span asp-validation-for="EmpID" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Name"></label>
+        </div>
+        <div class="col-10">
+            <input type="text" asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Gender"></label>
+        </div>
+        <div class="col-10">
+            <label>
+                <input type="radio" asp-for="Gender" value="Male"/>
+                Male
+            </label>
+            <label>
+                <input type="radio" asp-for="Gender" value="Female" />
+                Female
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Phone"></label>
+        </div>
+        <div class="col-10">
+            <input type="number" asp-for="Phone" class="form-control" autocomplete="off" />
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Email"></label>
+        </div>
+        <div class="col-10">
+            <input type="email" asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="JoinDate"></label>
+        </div>
+        <div class="col-10">
+            <input type="date" asp-for="JoinDate" class="form-control" />
+            <span asp-validation-for="JoinDate" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="ProPic"></label>
+        </div>
+        <div class="col-9">
+            <input asp-for="ProPic" type="file" class="form-control-file" />
+            <span asp-validation-for="ProPic" class="text-danger"></span>
+        </div>
+        <div class="col-1">
+            <img src="~/@ViewBag.CurrProPic" class="rounded-circle" width="50px" height="50px" />
+        </div>
+    </div>
+
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-sm btn-success">Save</button>
+        <button type="reset" class="btn btn-sm btn-primary">Reset</button>
+        <a asp-controller="Employee" asp-action="Index" class="btn btn-sm btn-danger">Cancle</a>
+    </div>
+</form>
+
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+<script>
+    $("#JoinDate").datepicker(
+    {
+        format: 'yyyy-mm-dd'
+    });
+</script>
+}

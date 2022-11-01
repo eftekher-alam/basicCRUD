@@ -1,0 +1,31 @@
+﻿@model BasicCRUD.Models.Department
+@{
+    TempData["Title"] = "Department Edit";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h3 class="text-info text-center">Department Edit</h3>
+            <hr />
+            <form method="post" asp-controller="Department" asp-action="Edit" asp-route-DeptId="@Model.DeptId" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="DepName"></label>
+                    <input asp-for="DepName" class="form-control" type="text" />
+                    <span asp-validation-for="DepName" class="text-danger"></span>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-sm btn-outline-success w-25">Update</button>
+                    <a asp-controller="Department" asp-action="Index" class="btn btn-sm btn-outline-danger w-25">Cancle</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

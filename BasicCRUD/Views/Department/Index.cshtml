@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BasicCRUD.Models.Department>
+@{
+    ViewData["Title"] = "Department Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h3 class="text-center text-info">Department List</h3>
+
+            <div class="row">
+                <div class="col-10"></div>
+                <div class="col-2">
+                    <a asp-controller="Department" asp-action="Create" class="btn btn-sm btn-outline-primary">Create</a>
+                </div>
+            </div>
+            <hr />
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Department Id</th>
+                        <th>Departemetn Name</th>
+                        <th>Modify</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.DeptId</td>
+                            <td>@item.DepName</td>
+                            <td>
+                                <a asp-controller="Department" asp-action="Edit" asp-route-DeptId="@item.DeptId" class="btn btn-sm btn-outline-primary">Edit</a>
+                                <a asp-controller="Department" asp-action="Delete" asp-route-DeptId="@item.DeptId" class="btn btn-sm btn-outline-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

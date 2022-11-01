@@ -1,0 +1,65 @@
+﻿@model BasicCRUD.Models.Employee
+
+@*if We use [ActionName("Delete")] in the post method*@
+@*<form asp-controller="Employee" asp-action="Delete" asp-route-EmpId="@Model.EmpID" method="post">*@
+<form asp-controller="Employee" asp-action="DeleteDone" asp-route-EmpId="@Model.EmpID" method="post">
+    <h3 class="text-center text-primary">Delete Employee</h3>
+    <hr />
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="EmpID"></label>
+        </div>
+        <div class="col-10">
+            <input asp-for="EmpID" class="form-control" readonly />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Name"></label>
+        </div>
+        <div class="col-10">
+            <input asp-for="Name" class="form-control" disabled />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-2">
+            <label>Gender</label>
+        </div>
+        <div class="col-10">
+            <label>
+                <input type="radio" asp-for="Gender" value="Male" disabled/>
+                Male
+            </label>
+            <label>
+                <input type="radio" asp-for="Gender" value="Female" disabled/>
+                Female
+            </label>
+            <span asp-validation-for="Gender" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Phone"></label>
+        </div>
+        <div class="col-10">
+            <input asp-for="Phone" class="form-control" readonly />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Email"></label>
+        </div>
+        <div class="col-10">
+            <input asp-for="Email" class="form-control" readonly />
+        </div>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+        <a asp-controller="Employee" asp-action="Index" class="btn btn-sm btn-success">Back</a>
+    </div>
+</form>
