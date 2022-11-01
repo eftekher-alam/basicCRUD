@@ -59,9 +59,10 @@ namespace BasicCRUD.Controllers
             {
                 _db.Departments.Update(department);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return PartialView("_Result", true);
             }
-            return View(department);
+
+            return PartialView("_Result", false);
         }
 
         [HttpGet]

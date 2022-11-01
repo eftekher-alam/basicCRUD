@@ -7,7 +7,15 @@
         <div class="col-6 offset-3">
             <h3 class="text-info text-center">Department Edit</h3>
             <hr />
-            <form method="post" asp-controller="Department" asp-action="Edit" asp-route-DeptId="@Model.DeptId" enctype="multipart/form-data">
+            <div id="placeholder"></div>
+            <form method="post" asp-controller="Department" asp-action="Edit" asp-route-DeptId="@Model.DeptId" enctype="multipart/form-data"
+                  id="fDepartment"
+                  data-ajax="true"
+                  data-ajax-method="POST"
+                  data-ajax-mode="replace"
+                  data-ajax-update="#placeholder"
+                  data-ajax-success="onSuccess">
+
                 <div class="form-group">
                     <label asp-for="DepName"></label>
                     <input asp-for="DepName" class="form-control" type="text" />
@@ -16,7 +24,7 @@
 
                 <div class="text-center">
                     <button type="submit" class="btn btn-sm btn-outline-success w-25">Update</button>
-                    <a asp-controller="Department" asp-action="Index" class="btn btn-sm btn-outline-danger w-25">Cancle</a>
+                    <a asp-controller="Department" asp-action="Index" class="btn btn-sm btn-outline-primary w-25">Back</a>
                 </div>
 
             </form>
@@ -25,7 +33,15 @@
 </div>
 
 @section scripts{
+   
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        function onSuccess() {
+            $("#fDepartment").trigger('reset');
+        }
+    </script>
+}
     @{
-        <partial name="_ValidationScriptsPartial" />
-    }
+    <partial name="_ValidationScriptsPartial" />
 }
