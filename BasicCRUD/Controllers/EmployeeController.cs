@@ -16,9 +16,6 @@ namespace BasicCRUD.Controllers
         readonly private ApplicationDbContext _db;
         readonly private IWebHostEnvironment _environment;
 
-
-        public object PictureviewModel { get; private set; }
-
         public EmployeeController(ApplicationDbContext db, IWebHostEnvironment environment)
         {
             _db = db;
@@ -46,7 +43,9 @@ namespace BasicCRUD.Controllers
                 var exist = _db.Employees.Find(employee.EmpID);
                 if (exist != null)
                 {
-                    ModelState.AddModelError("", $"{exist.EmpID} already exist.");
+                    //if we use first argument empty the error massage will show into "asp-validation-summary=\"All\""
+                    //ModelState.AddModelError("", $"{exist.EmpID} already exist.");
+                    ModelState.AddModelError("EmpID", $"{exist.EmpID} already exist."); //It will show below the input field.
                 }
                 else
                 {
